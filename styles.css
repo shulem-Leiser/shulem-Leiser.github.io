@@ -1,0 +1,290 @@
+ /* global declerations */
+ img {
+     max-width: 100%;
+     display: block;
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ /* end of global declerations */
+ header {
+     width: 100%;
+     height: 6em;
+     color: #003049;
+     background-color: #EAE2B7;
+     border-bottom: #F77F00 solid 1px;
+
+     position: fixed;
+     /* z-index: 1; */
+     top: 0px;
+     left: 0px;
+ }
+
+ /* .header-bg {
+
+(https://www.codecademy.com/courses/learn-intermediate-css/lessons/sizing-elements/exercises/scaling-background-img)
+     background-image: url('images/background-record.jpeg');
+     background-repeat: no-repeat;
+     display: block;
+     background-attachment: scroll;
+     background-size: 100% 100%;
+     background-position: cover;
+     max-width: 100%;
+     min-height: 100%;
+     width: 100%;
+     height: auto;
+ } */
+ nav {
+     height: 100%;
+
+ }
+
+ ul {
+     height: 100%;
+     list-style-type: none;
+     display: flex;
+     /* flex-direction: row;
+     flex-wrap: nowrap; */
+     align-items: stretch;
+     justify-content: flex-start;
+     /* align-content: center; */
+
+
+
+
+
+
+
+ }
+
+ li {
+     /* background-color: #e9d66e; */
+
+     display: flex;
+     margin: 0 1px;
+     /* padding: 0 auto; */
+     align-items: center;
+     justify-content: center;
+     min-width: 25%;
+
+     /* height: 100%;
+     line-height: 6em;
+     text-align: center;
+     
+     font-size: 22px; */
+
+
+ }
+
+
+
+ li a, .menu_item {
+     text-decoration: none;
+     font-size: 22px;
+     color: #003049;
+ }
+
+
+ li:hover {
+     background-color: #e9d66e;
+
+ }
+
+ .lang {
+     position: relative;
+     width: 100%;
+     text-align: center;
+ }
+
+ .div_sub {
+     display: none;
+     position: absolute;
+     background-color: #e9d66e;
+     width: 100%;
+
+
+ }
+
+ .sub_lang {
+     padding: 5px 0;
+ }
+
+ .lang:hover .div_sub {
+     display: block;
+
+
+     z-index: 1;
+ }
+
+ .sub_lang:hover {
+     background-color: #c4a912;
+ }
+
+ main {
+     padding-top: 8em;
+ }
+
+ time {
+     font-weight: bold;
+ }
+
+ .author {
+     background-color: rgb(173, 167, 167);
+     color: white;
+     font-size: 20px;
+     padding: 2px 10px;
+     border-radius: 50%;
+ }
+
+ .intro {
+     text-align: center;
+     line-height: 1.7;
+
+ }
+
+ .intro__description {
+     margin: 1em 0;
+     column-span: all;
+ }
+
+ .intro__p {
+     column-count: 2;
+     column-gap: 3em;
+     margin: 20px 12px;
+     display: block;
+     text-align: justify;
+ }
+
+
+
+
+ .sliced_bread, .curious_cases, .container_lang {
+     display: flex;
+     flex-direction: row;
+     overflow: scroll;
+     justify-content: stretch
+         /* max-height: 12em; */
+         /* flex-basis: content; */
+
+ }
+
+ .sliced_bread_item, .curious_cases_item {
+     margin: 0 10px;
+ }
+
+
+
+ h2 {
+
+     text-align: center;
+     margin: 6px 0;
+ }
+
+ .pod_header, .lang_header {
+     font-weight: bold;
+     font-size: large;
+     text-align: center;
+     margin: 8px 0 4px;
+ }
+
+ .pod_details, .lang_description {
+     text-align: justify;
+     padding: 0 12px;
+     margin-bottom: 3px;
+     line-height: 1.5;
+     width: 0;
+     min-width: 100%;
+     height: 180px;
+     overflow: scroll;
+
+ }
+
+ article>section {
+     border: 1px solid lightblue;
+     border-radius: 2%;
+
+ }
+
+ audio {
+     padding: 0 20px 3px;
+     margin: 15px 0 6px;
+ }
+
+ article {
+     height: 25%;
+ }
+
+
+
+ .grid_item_lang {
+     margin: 0 8px;
+     border: 1px solid grey;
+ }
+
+
+ article img {
+     width: max-content;
+
+ }
+
+ .contact_body {
+     background-color: #b8b5b5;
+ }
+
+ .contact_main {
+     width: 50%;
+     margin: auto auto;
+
+
+
+ }
+
+ label {
+     display: inline-block;
+     width: 80%;
+     margin-bottom: 7px;
+ }
+
+ .form_fields {
+     display: inline-block;
+     width: 80%;
+     margin-bottom: 15px;
+     height: 3em;
+     padding: 2px 12px;
+ }
+
+
+ .form_container {
+     background-color: #f2f2f2;
+     margin: 0 auto;
+     padding: 10px 10%;
+     border-radius: 5px;
+ }
+
+ .center_txt {
+     text-align: center;
+     padding: 10px 0;
+ }
+
+ #comment {
+     min-height: 8em; 
+     padding: 8px;
+ }
+
+ #submit {
+
+     min-width: 20%;
+     min-height: 20px;
+     background-color: #4CAF50;
+     /* Green */
+     border: 0.5px solid #0f4b11;
+     border-radius: 5px;
+     color: white;
+     padding: 15px 32px;
+     text-align: center;
+     font-size: 16px;
+ }
