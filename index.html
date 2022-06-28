@@ -3,126 +3,170 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Podcast Training </title>
-    <link rel="icon" type="image/png" href="images/podcast-favicon.png">
-    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            max-width: 40%;
+            margin: 40px auto;
 
+        }
+
+        .wrapper {
+            padding: 16px;
+            overflow: hidden;
+            margin: auto auto;
+            max-width: fit-content;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 5px 22px 5px;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        button:hover {
+            opacity: 1;
+        }
+
+        .gameBtn {
+            justify-content: space-around;
+            margin: auto;
+            padding: 15px;
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+
+        .signinbtn {
+            padding: 14px 20px;
+            background-color: #3652f4;
+        }
+
+        .signinbtn,
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li class="menu_item"><a href="index.html"><span class="vertical_li">Home</span></a> </li>
-                <li class="menu_item">
-                    <div class="lang menu_item">
-                        Lang
-                        <div class="div_sub">
-                            <div class="sub_lang"><a href="lang.html">Eng</a></div>
-                            <div class="sub_lang"><a href="lang.html">Ger</a></div>
-                            <div class="sub_lang"><a href="lang.html">Heb</a></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="menu_item"><a href="contact-us.html">Contact us</a> </li>
+    <form action="" style="border:1px solid #ccc" id="form">
+        <div class="wrapper">
+            <h1>sign up</h1>
+            <p>please fill in this form to create an account</p>
+            <hr>
 
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="intro">
-            <h1>learn a new language by listening to podcasts</h1>
-
-            <div class="intro__p">
-                <p class="intro__description">by <span class="author">Shulem Leiser</span> <time datetime="2022-04-28">
-                        april 28 2022</time></p>
-                <p>how many times have you wanted to improve your English but didn't succed? how many times have you
-                    thought "i wish i could take part in this conversation but they talk too fast? i'm sure many of you
-                    have had this struggle. i know, i too have had it for many years" </p>
-                <p>that's why i've developed what i call the <span>stream method</span>. a method where you train your
-                    brain to get used to a new language the same way babies learn their mother language. babies do not
-                    read dictionaries, nor do they go to special classes. Babies learn a language by getting exposed to
-                    it all trhe fucking time. </p>
-                <p>In this sense, podcasts are far better than any other form of media. they have no background noise /
-                    music / or any form of distraction. moreover, it is very easy to change the speed of playback as
-                    well as skip back if you didn't understand something</p>
-                <p>that's why iv'e handpicked for you a list of easy to listen to podcasts where the hosts speak in an
-                    easy to understand level and at an average speed. let's get going!</p>
+            <label for="name"><b> Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name">
+            <label for="password"><b> Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password">
+            <div class="clearfix">
+                <button type="button" class="signinbtn">Sign in</button>
+                <button type="submit" class="signupbtn">Create account</button>
             </div>
-        </section>
-        <h2>Sliced Bread</h2>   
-        <article class="sliced_bread">
+        </div>
+    </form>
+    <script>
+        document.querySelector(".signupbtn").onclick = usersArray;
+        document.querySelector(".signinbtn").onclick = signin;
+        function usersArray() {
+            const users = JSON.parse(window.localStorage.getItem("users")) || [];
+            let name = document.getElementById("name").value;
+            let password = document.getElementById("password").value;
+            let progress = [];
+            let user = {
+                "name": name,
+                "password": password,
+                "progress": progress
+            }
+            if (availableName(name, users)) {
+                pushUser(users, user);
 
-            <section class="sliced_bread_item">
-                <img src="/images/sliced_bread_img.jpeg" alt="">
-                <p class="pod_header">Air Source Heat Pumps</p>
-                <p class="pod_details">They’re promoted as a greener and cheaper alternative to gas boilers,
-                    but are air source heat pumps suitable for every home? We take the
-                    temperature to help a listener decide.</p>
-                <audio src="/audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
+            } else {
+                return alert(`${name} unavailable`)
+            }
+        }
+        function startGame() {
+            let form = document.querySelector("#form");
+            form.innerHTML = '<button type="button" class="gameBtn" id="ticBtn">Tic Tac Toe</button><button type="button" class="gameBtn" id="memoryBtn">Memory game</button>';
+            document.querySelector("#ticBtn").onclick = function redirect() {
+                location.href = "./tictactoe.html"
+            }
+            document.querySelector("#memoryBtn").onclick = function redirect() {
+                location.href = "./memory.html"
+            }
+        }
+        function pushUser(users, user) {
+            users.push(user);
+            window.localStorage.setItem("users", JSON.stringify(users));
+            window.localStorage.setItem("loggedUser", JSON.stringify(user.name));
+            startGame();
+        }
 
-            <section class="sliced_bread_item">
-                <img src="/images/sliced_bread_img.jpeg" alt="">
-                <p class="pod_header">Wagyu Beef</p>
-                <p class="pod_details">For some, a £100 wagyu steak is the best money can buy. But can we taste that
-                    difference in supermarket burgers that sell for less than £3.50 a pair?</p>
-                <audio src="/audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
+        function availableName(name, users) {
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].name == name) {
+                    return false
+                }
+            }
+            return true
+        }
+        function signin() {
+            const users = JSON.parse(window.localStorage.getItem("users"));
+            let name = document.getElementById("name").value;
+            let password = document.getElementById("password").value;
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].name == name) {
+                    if (users[i].password == password) {
+                        window.localStorage.setItem("loggedUser", JSON.stringify(name));
+                        window.localStorage.setItem("userIndex", JSON.stringify(i));
+                        return startGame();
+                    }
+                    return alert("incoreect password")
+                }
 
-            <section class="sliced_bread_item">
-                <img src="/images/sliced_bread_img.jpeg" alt="">
-                <p class="pod_header">Sustainable Jeans</p>
-                <p class="pod_details">They can cost ten times more but what exactly does sustainability mean? Does
-                    paying more mean they’ll last longer? Greg Foot literally tests some to destruction to find out.
-                </p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
+            }
+            return alert("username not fount")
+        }
 
-            <section class="sliced_bread_item">
-                <img src="/images/sliced_bread_img.jpeg" alt="">
-                <p class="pod_header">Electric Cars</p>
-                <p class="pod_details">In the first of this new series, Greg Foot asks whether electric vehicles (EVs)
-                    really are the best thing since sliced bread.
-
-                </p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
-        </article>
-
-        <h2>The Curious Cases of Rutherford & Fry</h2>   
-        <article class="curious_cases">
-
-            <section class="curious_cases_item">
-                <img src="/images/curious cases.jpeg" alt="">
-                <p class="pod_header">The Colour Conundrum</p>
-                <p class="pod_details">Rutherford and Fry set out to understand the fascinating processes and peculiarities of colour perception, from light-sensitive cells to complex brain mechanisms.</p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
-            <section class="curious_cases_item">
-                <img src="/images/curious cases.jpeg" alt="">
-                <p class="pod_header">The Colour Conundrum</p>
-                <p class="pod_details">Rutherford and Fry set out to understand the fascinating processes and peculiarities of colour perception, from light-sensitive cells to complex brain mechanisms.</p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
-            <section class="curious_cases_item">
-                <img src="/images/curious cases.jpeg" alt="">
-                <p class="pod_header">The Colour Conundrum</p>
-                <p class="pod_details">Rutherford and Fry set out to understand the fascinating processes and peculiarities of colour perception, from light-sensitive cells to complex brain mechanisms.</p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
-            <section class="curious_cases_item">
-                <img src="/images/curious cases.jpeg" alt="">
-                <p class="pod_header">The Colour Conundrum</p>
-                <p class="pod_details">Rutherford and Fry set out to understand the fascinating processes and peculiarities of colour perception, from light-sensitive cells to complex brain mechanisms.</p>
-                <audio src="audio/SlicedBread-20220428.mp3" controls></audio>
-            </section>
-
-            
-        </article>
-    </main>
-
+    </script>
 </body>
 
 </html>
